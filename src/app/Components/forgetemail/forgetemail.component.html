@@ -1,0 +1,31 @@
+<div fxLayoutAlign="center center" class="screen1" fxFlex.xs=100>
+  <div fxLayout="column" fxLayoutAlign="center center " style="border-radius: 10px; border: 1px solid darkgrey;"
+    fxFlex.xs=100>
+
+    <form [formGroup]="forgetemailForm" fxFlex.xs=100>
+      <div>
+        <span class="textsty" style="color:#4169e1">F</span>
+        <span class="textsty" style="color:#b22222">u</span>
+        <span class="textsty" style="color: #ff8c00">n</span>
+        <span class="textsty" style="color:#4169e1">d</span>
+        <span class="textsty" style="color:#008000">o</span>
+        <span class="textsty" style="color:#FF0000">o</span>
+      </div>
+      <p class="textsty">Find your email</p>
+      <p>Enter your phone number or recovery email</p>
+      
+      <div fxLayoutAlign="center " >
+        <mat-form-field  appearance="outline">
+          <mat-label>Phone number or email</mat-label>
+          <input matInput placeholder="" formControlName="email">
+          <mat-error>Enter phone number or email</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="lastbuttons" div fxLayout="row" fxLayoutAlign="space-between center">
+        <button class="button" routerLink='/login'>Signin</button>
+        <button class="nextbutton" mat-raised-button (click)="onSubmit()">Next</button>
+      </div>
+    </form>
+  </div>
+</div>

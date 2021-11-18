@@ -1,0 +1,150 @@
+<div fxLayoutAlign="center center" class="screen1" fxFlex.xs=100>
+  <div fxLayout="row" fxLayoutAlign="center center" style="border-radius: 10px; border: 1px solid darkgrey;"
+    fxFlex.xs=100>
+
+    <div fxLayout="column" fxFlex.xs=100>
+      <form [formGroup]="registerForm" fxFlex.xs=100>
+        <div fxLayout.xs="column">
+        <div>
+          <span class="textsty" style="color:#4169e1">F</span>
+          <span class="textsty" style="color:#b22222">u</span>
+          <span class="textsty" style="color: #ff8c00">n</span>
+          <span class="textsty" style="color:#4169e1">d</span>
+          <span class="textsty" style="color:#008000">o</span>
+          <span class="textsty" style="color:#FF0000">o</span>
+        </div>
+
+        <p class="textsty">Create your Fundoo Account</p>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="" formControlName="firstName" />
+            <mat-error>Enter first and last names</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="" formControlName="lastName" />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="email" appearance="outline" style="width: 100%;">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput placeholder="" formControlName="email" class="form-control">
+            <mat-error>Choose a Gmail address</mat-error>
+          </mat-form-field>
+          <small [ngStyle.lt-md]="{'font-size.px': 15}">You can use letters, numbers & periods</small>
+        </div>
+
+        <div style="margin-top: 5px;">
+          <button class="button">Use my current email address instead</button>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="" type="password" formControlName="password" />
+            <mat-error>Enter password</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm password</mat-label>
+            <input matInput placeholder="" type="password" formControlName="confirmPassword" />
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column">
+          <small [ngStyle.lt-md]="{'font-size.px': 15}">Use 8 or more characters with a mix of letters, numbers &
+            symbols</small>
+          <mat-checkbox style="margin-top: 10px;" class="example-margin">Show password</mat-checkbox>
+        </div>
+
+        <div class="lastbuttons" fxLayout="row" fxLayoutAlign="space-between center">
+          <button class="button" routerLink='/login'>Signin instead</button>
+          <button class="nextbutton" mat-raised-button (click)="onSubmit()">Next</button>
+        </div>
+
+
+      </form>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" class="image" fxHide.lt-md>
+      <img style="height: 250px;width: 250px;" src="../../../assets/account.svg">
+      <p class="para">One account. All of Google working for you.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <p>
+            <mat-form-field appearance="outline">
+              <mat-label>First name</mat-label>
+              <input type="text" formControlName="firstName" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+              <mat-hint *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <mat-hint *ngIf="f.firstName.errors.required">First Name is required</mat-hint>
+              </mat-hint>
+            </mat-form-field>
+          </p> -->
+
+<!-- <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>Last name</mat-label>
+                  <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">     
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                </div>
+                </mat-form-field>
+               
+              </p>
+             </div>
+
+             <div >
+              <p >
+                <mat-form-field class="email" appearance="outline">
+                  <mat-label>Username</mat-label>
+                  <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+                  <span matSuffix>@gmail.com</span>  
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div> 
+                </mat-form-field>
+                <small>You can use letters, numbers & periods</small>
+              </p>
+             </div>
+
+              <div >
+                <button class="button">Use my current email address instead</button>
+              </div>
+            
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">     
+                  <mat-hint *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <mat-hint *ngIf="f.password.errors.required">Password is required</mat-hint>
+                    <mat-hint *ngIf="f.password.errors.minlength">Password must be at least 6 characters</mat-hint>
+                </mat-hint>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirm</mat-label>
+                  <input type="password" formControlName="CnonfirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ConfirmPassword.errors }">     
+                  <mat-hint *ngIf="submitted && f.ConfirmPassword.errors" class="invalid-feedback">
+                    <mat-hint *ngIf="f.ConfirmPassword.errors.required">Confirm Password is required</mat-hint>
+                    <mat-hint *ngIf="f.ConfirmPassword.errors.mustMatch">Passwords must match</mat-hint>
+                </mat-hint>    
+                </mat-form-field>
+              </p>
+             </div> -->
