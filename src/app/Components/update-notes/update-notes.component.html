@@ -1,0 +1,19 @@
+<div fxLayout="column" fxLayoutAlign="space-between space-between">
+    <div fxLayout="row">
+        <input matInput [(ngModel)]="title" style="height: 50px; font-size: 35px;" type="text" placeholder="Title">
+        <button mat-icon-button>
+            <img style="width: 35px; height: 35px;" src="../../../assets/push_pin_black_24dp.svg" alt="">
+        </button>
+    </div>
+    <div>
+        <textarea matInput [(ngModel)]="description" style="height: 100px; font-size: 25px;margin-top: 20px;"
+            type="text" placeholder="Take a note"></textarea>
+        <!-- <input matInput [(ngModel)]="description" style="height:50px; font-size: 20px;" type="text" placeholder="Take a note"> -->
+        <div fxLayout="row" fxLayoutAlign="space-between centre" style="margin-top: 20px;">
+            <div style=" width: 60%; margin-bottom: -20px;" fxLayout="row" fxLayoutAlign="space-evenly center">
+                <app-icons></app-icons>
+            </div>
+            <button style="border: none;width: 80px;height: 50px;" (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+</div>

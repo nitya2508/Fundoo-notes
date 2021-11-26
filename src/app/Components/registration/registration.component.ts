@@ -12,6 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class RegistrationComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
+  inputType = "password";
 
   constructor(private formBuilder: FormBuilder, private user: UserService,private snackbar: MatSnackBar ) { }
 
@@ -30,6 +31,20 @@ export class RegistrationComponent implements OnInit {
 
   get f() { return this.registerForm.controls; }
 
+  yourfunc(e:any){
+    console.log("inside yourfunc",this.registerForm.value.password, e);
+    
+    if(e.checked == true) {
+      this.inputType = "text";
+      // console.log(this.inputType);
+      
+      // this.show = true;
+    } else {
+      this.inputType = "password";
+      // console.log(this.inputType);
+      // this.show = false;
+    }
+  }
   onSubmit() {
     this.submitted = true;
      console.log("registration ======",this.registerForm.value);

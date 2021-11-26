@@ -1,0 +1,70 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+ .buttons{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 35px; 
+    height: 35px; 
+   
+    // margin-top: 40px;
+    // margin-top: 40px;   
+}
+
+.menu-icon{
+    margin-top: 33px;
+    margin-left: -10px;
+}
+
+.menu-icon:hover {
+    background-color: lightgrey;
+    // padding: 2px 2px 2px 2px;
+    border-radius: 50px;
+}
+
+// .icons{
+//     opacity: 0.6;
+//     margin-left: -2px;
+//     margin-right: 10px;
+// }
+
+.icon:hover {
+    background-color: lightgrey;
+    padding: 2px 2px 2px 2px;
+    border-radius: 50px;
+}
+
+
+#icon {
+    margin-left: -30px;
+    // margin-right: 10px;
+}
+
+#icon:hover {
+    background-color: lightgrey;
+    padding: 2px 2px 2px 2px;
+    border-radius: 50px;
+}
+
+#pin-icon {
+    margin-left: -45px;
+    background-color: transparent;
+    margin-top: 0px;
+    z-index: 4; 
+}
+
+.pop {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: white;
+    max-width: 170px;
+    margin-left: 5px;
+  }
+  .colorButton {
+    margin-right: 1px;
+    white-space: 2px;
+  }

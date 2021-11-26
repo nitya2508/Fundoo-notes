@@ -1,0 +1,110 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div *ngIf="display;then takeNotes; else inputNotes"></div>
+    <ng-template #takeNotes>
+        <div style="margin-top: 50px; width: 45%;" fxLayoutAlign="center center">
+            <mat-form-field style=" width: 900px; border: black;" appearance="outline">
+                <input matInput style="margin-left: 45px; font-size: 30px;" placeholder="Take a note..."
+                    (click)="takeNote()">
+
+                <mat-icon matSuffix>
+                    <button mat-icon-button class="example-icon favorite-icon"
+                        aria-label="Example icon-button with heart icon">
+                        <img style="width: 35px; height: 35px; margin-right: 350px;margin-top: -30px;"
+                            src="../../../assets/check_box_black_24dp.svg" alt="">
+                    </button>
+
+                    <button mat-icon-button class="example-icon favorite-icon"
+                        aria-label="Example icon-button with heart icon">
+                        <img style="width: 35px; height: 35px; margin-right: 300px;margin-top: -30px;"
+                            src="../../../assets/brush_black_24dp.svg" alt="">
+                    </button>
+
+                    <button mat-icon-button class="example-icon favorite-icon"
+                        aria-label="Example icon-button with heart icon">
+                        <img style="width: 35px; height: 35px; margin-right: 250px;margin-top: -30px;"
+                            src="../../../assets/insert_photo_black_24dp.svg" alt="">
+                    </button>
+                </mat-icon>
+            </mat-form-field>
+        </div>
+    </ng-template>
+
+    <ng-template #inputNotes>
+        <form [formGroup]="createNotesForm" (ngSubmit)="onSubmit()">
+            <div id="second" style="border: 1px solid gray; margin-top: 50px; width: 1000px;" fxLayout="column"
+                fxLayoutAlign="center center">
+                <mat-form-field style=" width: 900px; " appearance="outline">
+                    <input matInput [class]="input_title" style="margin-left: 45px; font-size: 30px;" placeholder="Title" formControlName="title">
+
+                    <mat-icon matSuffix>
+
+                        <button mat-icon-button class="example-icon favorite-icon"
+                            aria-label="Example icon-button with heart icon">
+                            <img style="width: 35px; height: 35px; margin-right: 50px;margin-top: -30px;"
+                                src="../../../assets/push_pin_black_24dp.svg" alt="">
+                        </button>
+                    </mat-icon>
+                </mat-form-field>
+                <mat-form-field style=" width: 900px; " appearance="outline">
+                    <input matInput [class]="input_description" style="margin-left: 45px; font-size: 30px;" placeholder="Take a note..." formControlName="description">
+                </mat-form-field>
+
+                <div  style="margin-left: 30px;width: 90%;" 
+                    fxLayoutAlign="space-between center">
+                    <app-icons></app-icons>
+                  
+                    <button style="width: 80px;height: 40px;font-size: 25px;border: none;"  >Close</button>
+                   
+                </div>
+
+            </div>
+        </form>
+    </ng-template>
+
+</div>
+
+<!-- <mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-form-field style=" width: 900px; border: black;" appearance="outline">
+                    <input matInput style="margin-left: 45px; font-size: 30px;" placeholder="Take a note..."
+                        (click)="takeNote($event)">
+    
+                    <mat-icon matSuffix>
+                        <button mat-icon-button class="example-icon favorite-icon"
+                            aria-label="Example icon-button with heart icon">
+                            <img style="width: 35px; height: 35px; margin-right: 350px;margin-top: -30px;"
+                                src="../../../assets/check_box_black_24dp.svg" alt="">
+                        </button>
+    
+                        <button mat-icon-button class="example-icon favorite-icon"
+                            aria-label="Example icon-button with heart icon">
+                            <img style="width: 35px; height: 35px; margin-right: 300px;margin-top: -30px;"
+                                src="../../../assets/brush_black_24dp.svg" alt="">
+                        </button>
+    
+                        <button mat-icon-button class="example-icon favorite-icon"
+                            aria-label="Example icon-button with heart icon">
+                            <img style="width: 35px; height: 35px; margin-right: 250px;margin-top: -30px;"
+                                src="../../../assets/insert_photo_black_24dp.svg" alt="">
+                        </button>
+                    </mat-icon>
+                </mat-form-field>
+            </mat-panel-title>
+            
+        </mat-expansion-panel-header>
+        <p>This is the primary content of the panel.</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+                Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+</mat-accordion> -->

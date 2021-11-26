@@ -48,20 +48,20 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="" type="password" formControlName="password" />
+            <input matInput placeholder="" [type]="inputType" formControlName="password" />
             <mat-error>Enter password</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Confirm password</mat-label>
-            <input matInput placeholder="" type="password" formControlName="confirmPassword" />
+            <input matInput placeholder="" [type]="inputType" formControlName="confirmPassword" />
           </mat-form-field>
         </div>
 
         <div fxLayout="column">
           <small [ngStyle.lt-md]="{'font-size.px': 15}">Use 8 or more characters with a mix of letters, numbers &
             symbols</small>
-          <mat-checkbox style="margin-top: 10px;" class="example-margin">Show password</mat-checkbox>
+          <mat-checkbox style="margin-top: 10px;" class="example-margin" (change)="yourfunc($event)" >Show password</mat-checkbox>
         </div>
 
         <div class="lastbuttons" fxLayout="row" fxLayoutAlign="space-between center">
