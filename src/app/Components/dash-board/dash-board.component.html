@@ -3,49 +3,47 @@
   <mat-toolbar color="white" class="example-toolbar">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
       (click)="snav.toggle()">
-      <img style="width: 35px; height: 35px; margin-left: 20px; margin-right: 15px;"
+      <img style="width: 25px; height: 25px; margin-left: 20px; margin-right: 15px;"
         src="../../../assets/menu_black_24dp.svg" alt=""> </button>
 
     <div fxLayout="row">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <img style="width: 60px; height: 60px; margin-left: 25px; margin-top: -5px;" src="../../../assets/keepimage.png"
+        <img style="width: 40px; height: 40px; margin-left: 25px; margin-top: -5px;" src="../../../assets/keepimage.png"
           alt=""></button>
-      <a style="font-size: 35px; margin-top: 10px; margin-left: 50px;">Fundoo</a>
+      <a style="font-size: 25px; margin-top: 10px; margin-left: 50px;">Fundoo</a>
     </div>
 
-    <div >
-      <mat-form-field style="margin-top: -15px; width: 1100px; margin-left: 130px; height: 20px;"
-        appearance="outline">
+    <div>
+      <mat-form-field style=" width: 600px; margin-left: 120px; height: -5px;margin-top: -15px;" appearance="outline">
         <mat-icon matPrefix>
           <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-            <img style="width: 40px; height: 40px; margin-top: -10px;" src="../../../assets/search_black_24dp.svg"
+            <img style="width: 25px; height: 25px; margin-top: -20px;" src="../../../assets/search_black_24dp.svg"
               alt=""></button>
         </mat-icon>
-        <input matInput style="margin-left: 45px; font-size: 30px;" placeholder="Search">
+        <input matInput style="margin-left: 45px; font-size: 20px;height: 30px;" placeholder="Search">
 
       </mat-form-field>
 
     </div>
 
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <img style="width: 35px; height: 35px; margin-left: 40px; margin-right: 15px;"
+      <img style="width: 25px; height: 25px; margin-left: 30px; margin-right: 15px;"
         src="../../../assets/refresh_black_24dp.svg" alt="">
     </button>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <img style="width: 35px; height: 35px; margin-left: 70px; margin-right: 15px;"
+      <img style="width: 25px; height: 25px; margin-left: 60px; margin-right: 15px;"
         src="../../../assets/view_stream_black_24dp.svg" alt="">
     </button>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <img style="width: 35px; height: 35px; margin-left: 100px; margin-right: 15px;"
+      <img style="width: 25px; height: 25px; margin-left: 90px; margin-right: 15px;"
         src="../../../assets/settings_black_24dp.svg" alt="">
     </button>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <img style="width: 35px; height: 35px; margin-left: 200px; margin-right: 15px;"
+      <img style="width: 25px; height: 25px; margin-left: 150px; margin-right: 15px;"
         src="../../../assets/apps_black_24dp.svg" alt="">
     </button>
-    <button mat-icon-button (click)="logout()"
-     class="example-icon" aria-label="Example icon-button with share icon">
-      <img style="width: 35px; height: 35px; margin-left: 250px; margin-right: 15px;"
+    <button mat-icon-button (click)="logout()" class="example-icon" aria-label="Example icon-button with share icon">
+      <img style="width: 25px; height: 25px; margin-left: 180px; margin-right: 15px;"
         src="../../../assets/account_circle_black_24dp.svg" alt="">
     </button>
     <!-- <mat-menu #menu="matMenu">
@@ -53,34 +51,49 @@
     </mat-menu> -->
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 50 : 100">
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 50 : 60">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
-      <mat-nav-list>
-        <a style="width: 300px; height: 70px; font-size: 25px; border-radius: 50px;" mat-list-item routerLink="notes">
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-nav-list (mouseleave)="isExpandable=false">
+        <div class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"
+          fxLayoutGap="20px" mat-list-item (click)="notes();">
+          <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
             <img src="../../../assets/lightbulb_black_24dp.svg" alt="">
-          </button><span>Notes</span></a>
+          </button>
+          <p class="navName" *ngIf="isExpandable">Notes</p>
+        </div>
 
-        <a style="width: 300px; height: 70px; font-size: 25px; border-radius: 50px;" mat-list-item routerLink="reminders">
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <div class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"
+          fxLayoutGap="20px" mat-list-item (click)="reminder();">
+          <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
             <img src="../../../assets/notifications_black_24dp.svg" alt="">
-          </button>Reminders</a>
+          </button>
+          <p class="navName" *ngIf="isExpandable">Reminders</p>
+        </div>
 
-        <a style="width: 300px; height: 70px; font-size: 25px; border-radius: 50px;" mat-list-item routerLink=".">
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <div class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"
+          fxLayoutGap="20px" mat-list-item (click)="editlabel();">
+          <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
             <img src="../../../assets/edit_black_24dp.svg" alt="">
-          </button>Edit Labels</a>
+          </button>
+          <p class="navName" *ngIf="isExpandable">Edit Labels</p>
+        </div>
 
-        <a style="width: 300px; height: 70px; font-size: 25px; border-radius: 50px;" mat-list-item routerLink="archive">
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <div class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"
+          fxLayoutGap="20px" mat-list-item (click)="archive();">
+          <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
             <img src="../../../assets/archive_black_24dp.svg" alt="">
-          </button>Archives</a>
+          </button>
+          <p class="navName" *ngIf="isExpandable">Archive</p>
+        </div>
 
-        <a style="width: 300px; height: 70px; font-size: 25px; border-radius: 50px;" mat-list-item routerLink="trash">
-          <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <div class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"
+          fxLayoutGap="20px" mat-list-item (click)="trash();">
+          <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
             <img src="../../../assets/delete_black_24dp.svg" alt="">
-          </button>Trash</a>
+          </button>
+          <p class="navName" *ngIf="isExpandable">Trash</p>
+        </div>
       </mat-nav-list>
     </mat-sidenav>
 

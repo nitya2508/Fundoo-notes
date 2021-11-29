@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NoteService } from 'src/app/services/noteService/note.service';
 import { Output, EventEmitter } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-notes',
@@ -13,7 +14,7 @@ export class CreateNotesComponent implements OnInit {
   display = true;
   input_title = '';
   input_description = '';
-  constructor(private formBuilder: FormBuilder, private note: NoteService) { }
+  constructor(private formBuilder: FormBuilder, private note: NoteService,private snackbar:MatSnackBar) { }
   @Output() messageEvent = new EventEmitter<string>();
 
   ngOnInit() {
@@ -47,6 +48,9 @@ export class CreateNotesComponent implements OnInit {
         this.messageEvent.emit(res)
         console.log("messageEvent", this.messageEvent);
 
+        this.snackbar.open('Note created Successfully !','',{
+          duration: 2000,
+        });
         
 
       }, error => {

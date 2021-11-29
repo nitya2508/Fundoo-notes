@@ -5,6 +5,8 @@ import { TrashNotesComponent } from '../trash-notes/trash-notes.component';
 import { ArchiveNotesComponent } from '../archive-notes/archive-notes.component';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-icons',
@@ -21,22 +23,23 @@ export class IconsComponent implements OnInit {
   isArchiveComponent: boolean = false;
 
 
-  constructor(private note: NoteService,  private route: ActivatedRoute, private Router: Router) { }
+  constructor(private note: NoteService,  private route: ActivatedRoute, private Router: Router,
+    private snackbar :MatSnackBar) { }
 
   ngOnInit(): void {
 
     let comp = this.route.snapshot.component;
     if (comp == DisplayCardComponent) {
-      this.isDisplayNoteComponent = true;
+      // this.isDisplayNoteComponent = true;
     }
 
     if (comp == TrashNotesComponent) {
       this.isTrashComponent = true;
-      console.log(this.isTrashComponent);
+      // console.log(this.isTrashComponent);
     }
     if (comp == ArchiveNotesComponent) {
       this.isArchiveComponent = true;
-      console.log(this.isArchiveComponent);
+      // console.log(this.isArchiveComponent);
     }
 
 
@@ -68,6 +71,13 @@ export class IconsComponent implements OnInit {
     this.note.trashNoteService(req).subscribe((res: any) => {
       console.log("inside icon calling trash ", res.data);
       this.messageTrashtoDisplay.emit(res)
+
+      this.snackbar.open('Note deleted !','',{
+        duration: 2000,
+      });
+    },error=>{
+      console.log("error",error);
+      
     })
 
   }
@@ -83,6 +93,13 @@ export class IconsComponent implements OnInit {
     this.note.archiveNoteService(req).subscribe((res: any) => {
       console.log("inside icon calling archive", res.data);
       this.messageTrashtoDisplay.emit(res)
+   
+      this.snackbar.open('Note archived !','',{
+        duration: 2000,
+      });
+    },error=>{
+      console.log("error",error);
+      
     })
   }
  
@@ -97,6 +114,13 @@ export class IconsComponent implements OnInit {
       this.note.archiveNoteService(req).subscribe((res:any) => {
         console.log("inside icon calling archive" , res.data);
         this.messageTrashtoDisplay.emit(res)
+     
+        this.snackbar.open('Note unarchived !','',{
+          duration: 2000,
+        });
+      },error=>{
+        console.log("error",error);
+        
       })
   }
 
@@ -108,6 +132,13 @@ export class IconsComponent implements OnInit {
     this.note.deleteNoteService(req).subscribe((res: any) => {
       console.log("inside icon calling trash ", res.data);
       this.messageTrashtoDisplay.emit(res)
+    
+      this.snackbar.open('Note deleted forever !','',{
+        duration: 2000,
+      });
+    },error=>{
+      console.log("error",error);
+      
     })
 
   }
@@ -120,11 +151,20 @@ export class IconsComponent implements OnInit {
     this.note.trashNoteService(req).subscribe((res: any) => {
       console.log("inside icon calling trash ", res.data);
       this.messageTrashtoDisplay.emit(res)
+    
+      this.snackbar.open('Note restored !','',{
+        duration: 2000,
+      });
+    },error=>{
+      console.log("error",error);
+      
     })
-
   }
 
   setColor(color: any) {
+    console.log('color', color);
+    console.log(this.noteCard);
+    
     this.noteCard.color = color;
     console.log('color', color);
     let data = {
@@ -136,6 +176,7 @@ export class IconsComponent implements OnInit {
       (response: any) => {
         // this.color.emit()
         console.log('Response of setColour', response);
+        this.messageTrashtoDisplay.emit(color)
       },
       (error: any) => {
         console.log('archive Error at icons methods', error);

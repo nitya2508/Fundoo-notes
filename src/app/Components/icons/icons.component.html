@@ -1,18 +1,18 @@
-<div style="width:350px; " fxLayoutAlign="space-around center" *ngIf="!isTrashComponent">
+<div style="width:250px; " fxLayoutAlign="space-around center" *ngIf="!isTrashComponent">
 
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <img style="width: 35px; height: 35px; margin-right: 350px;margin-top: -30px;"
+        <img style="width: 25px; height: 25px; margin-right: 350px;margin-top: -30px;"
             src="../../../assets/notifications_black_24dp.svg" alt="">
     </button>
 
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <img style="width: 35px; height: 35px; margin-right: 300px;margin-top: -30px;"
+        <img style="width: 25px; height: 25px; margin-right: 300px;margin-top: -30px;"
             src="../../../assets/person_add_alt_black_24dp.svg" alt="">
     </button>
 
     <button mat-icon-button [matMenuTriggerFor]="colorMenu" #menuTrigger class="example-icon favorite-icon"
         aria-label="Example icon-button with heart icon">
-        <img style="width: 35px; height: 35px; margin-right: 250px;margin-top: -30px;"
+        <img style="width: 25px; height: 25px; margin-right: 250px;margin-top: -30px;"
             src="../../../assets/color_lens_black_24dp.svg" alt="">
         <mat-menu #colorMenu="matMenu">
             <div class="pop">
@@ -25,28 +25,28 @@
         </mat-menu>
     </button>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <img style="width: 35px; height: 35px; margin-right: 350px;margin-top: -30px;"
+        <img style="width: 25px; height: 25px; margin-right: 350px;margin-top: -30px;"
             src="../../../assets/insert_photo_black_24dp.svg" alt="">
     </button>
 
     <div *ngIf="!isArchiveComponent">
         <button mat-icon-button (click)="archiveNote()" class="example-icon favorite-icon"
             aria-label="Example icon-button with heart icon">
-            <img style="width: 35px; height: 35px; margin-right: 300px;margin-top: -30px;"
+            <img style="width: 25px; height: 25px; margin-right: 300px;margin-top: -30px;"
                 src="../../../assets/archive_black_24dp.svg" alt="">
         </button>
     </div>
     <div *ngIf="isArchiveComponent">
         <button mat-icon-button (click)="unarchive()" class="example-icon favorite-icon"
             aria-label="Example icon-button with heart icon">
-            <img style="width: 35px; height: 35px; margin-right: 300px;margin-top: -30px;"
+            <img style="width: 25px; height: 25px; margin-right: 300px;margin-top: -30px;"
                 src="../../../assets/unarchive_black_24dp.svg" alt="">
         </button>
     </div>
 
     <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger class="example-icon favorite-icon"
         aria-label="Example icon-button with heart icon">
-        <img style="width: 35px; height: 35px; margin-right: 250px;margin-top: -30px;"
+        <img style="width: 25px; height: 25px; margin-right: 250px;margin-top: -30px;"
             src="../../../assets/more_vert_black_24dp.svg" alt="">
     </button>
 
@@ -56,15 +56,15 @@
 
 </div>
 
-<div *ngIf="isTrashComponent" style=" margin-left: -150px; width:100px;" fxLayout="row"
+<div *ngIf="isTrashComponent" style=" margin-left: -130px; width:80px;" fxLayout="row"
     fxLayoutAlign="space-between center">
     <button class="buttons" matTooltip="Delete forever" (click)="permanentDelete()">
-        <img style="width: 35px; height: 35px; margin-right: 250px;margin-top: -30px;" class="icons"
+        <img style="width: 25px; height: 25px; margin-right: 250px;margin-top: -30px;" class="icons"
             src="../../../assets/delete_forever_black_24dp.svg" alt="">
     </button>
 
     <button class="buttons" matTooltip="Restore" (click)="restore()">
-        <img style="width: 35px; height: 35px; margin-right: 250px;margin-top: -30px;" class="icons"
+        <img style="width: 25px; height: 25px; margin-right: 250px;margin-top: -30px;" class="icons"
             src="../../../assets/restore_from_trash_black_24dp.svg" alt="">
     </button>
 </div>

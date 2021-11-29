@@ -11,15 +11,18 @@ export class UpdateNotesComponent implements OnInit {
 title:any;
 description:any;
 id:any;
+color:any;
 
   constructor(
+   
     private note: NoteService,
     public dialogRef: MatDialogRef<UpdateNotesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.title=data.title;
     this.description=data.description;
-    this.id=data.id
+    this.id=data.id;
+    this.color=data.color;
   }
 
   onNoClick(): void {
@@ -27,6 +30,7 @@ id:any;
   }
 
   ngOnInit(): void {
+
   }
 
   closeDialog(){
@@ -40,5 +44,11 @@ id:any;
       this.dialogRef.close(response);
       
     })
+  }
+  receivemessageTrashtoDisplay($event:any){
+    console.log("event from display to getAllNotes",$event);
+    console.log("inside updaes");
+    this.color=$event;
+    
   }
 }

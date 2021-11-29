@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dash-board.component.scss']
 })
 export class DashBoardComponent implements OnDestroy {
-
+  isExpandable: boolean = false;
   mobileQuery: MediaQueryList;
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
@@ -42,5 +42,25 @@ export class DashBoardComponent implements OnDestroy {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login')
   }
+
+  notes() {
+    this.router.navigateByUrl('/home/notes');
+  };
+
+  reminder() {
+    this.router.navigateByUrl('/home/reminders');
+  };
+
+  editlabel() {
+    this.router.navigateByUrl('/home');
+  };
+
+  archive() {
+    this.router.navigateByUrl('/home/archive');
+  };
+
+  trash() {
+    this.router.navigateByUrl('/home/trash');
+  };
 }
 

@@ -1,15 +1,15 @@
-<div style="margin-left: 50px;"  fxLayout="row wrap" >
+<div  style="margin-left: 50px;"  fxLayout="row wrap" >
   <div *ngFor="let note of NotesList">
-    <mat-card style="border:0.2px solid #D3D3D3 ; width: 320px;margin: 15px; border-radius: 20px;" [style.background]="note.color" class="example-card">
+    <mat-card class="discard"  [style.background]="note.color" class="example-card">
       <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-      <mat-card-title (click)="openDialog(note)">{{note.title}}</mat-card-title>
-      <mat-card-content style="font-size: 18px; margin-top: 15px;" (click)="openDialog(note)">
+      <mat-card-title style="font-size: 20px;"(click)="openDialog(note)">{{note.title}}</mat-card-title>
+      <mat-card-content style="font-size: 15px; margin-top: 15px;" (click)="openDialog(note)">
         <!-- <p>This card has divider and indeterminate progress as footer</p> -->
         <p>{{ note.description }}</p>
       </mat-card-content>
       <!-- <mat-divider inset></mat-divider> -->
       <mat-card-actions>
-        <div style=" margin-bottom: -30px;" fxLayoutAlign="space-evenly center" >
+        <div class="hide"  fxLayoutAlign="space-evenly center" >
         <app-icons [noteCard]="note" (messageTrashtoDisplay)="receivemessageTrashtoDisplay($event)" ></app-icons>
       </div>
       </mat-card-actions>
