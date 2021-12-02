@@ -1,0 +1,74 @@
+<!-- <mat-list >
+        <mat-list-item>Collaborators</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>{{firstName}} {{lastName}} <span class="owner">(owner) </span> </mat-list-item>
+        <small style="margin-left: -7px;color:#5f6368 ;"> {{email}} </small>
+
+        <mat-list-item>Item 3</mat-list-item>
+
+        <span class="info">{{firstName}} {{lastName}} </span>
+        <span class="owner">(owner) </span>
+  <span style="margin-left: -7px;color:#5f6368 ;"> {{email}} </span> -->
+
+    <!-- </mat-list>
+    <div class="footer" fxLayout="row" fxLayoutAlign="end center">
+        <button class="button">Cancel</button>
+        <button class="button">Save</button>
+    </div> --> 
+
+<div>
+
+    <div > 
+        <h2 class="heading">Collaborators</h2>
+        <hr class="solid">
+    </div>
+        <div>
+            <div style="margin: 10px;" fxLayout="row" fxLayoutAlign="start center">
+            <img class="image" src="https://lh3.googleusercontent.com/ogw/ADea4I7qPO7rI92gQPmO2O8W50RMqOoI7NjX1vly37TU=s32-c-mo" >
+                <div fxLayout="column" fxLayoutAlign="start start" >
+                    <div > 
+                    <span class="info">{{firstName}} {{lastName}} </span>
+                    <span class="owner">(owner) </span>
+                    </div>  
+                    <span style="margin-left: 15px;color:#5f6368 ;"> {{email}} </span> 
+                </div>
+            </div>
+
+            <div *ngFor="let collborate of collaborators">
+                <div style="margin: 10px;" fxLayout="row" fxLayoutAlign="start center">
+                    <img class="image1" src="../../../assets/account_circle_black_24dp.svg" alt="">
+                    <div fxLayout="column" fxLayoutAlign="start start" >
+                        
+                        <span class="info">{{collborate.firstName}} {{collborate.lastName}} </span>
+                        <span style="margin-left: 15px;color:#5f6368 ;"> {{collborate.email}} </span> 
+                    </div>   
+                </div>
+            </div>
+
+        
+            <div style="margin: 10px;" fxLayout="row" fxLayoutAlign="start center">
+                <img class="image1" src="../../../assets/person_add_black_24dp.svg" alt="">
+                <div fxLayout="column" fxLayoutAlign="start start" [matMenuTriggerFor]="emailList" #menuTrigger >
+                    <input [(ngModel)]="inputEmail" class="input" type="text" (keyup)="changeInput($event)" placeholder="Person or email to share with">
+                </div>
+                <mat-menu #emailList="matMenu" class="matMenu">
+                    <div >
+        
+                        <div *ngFor="let collab of collaboratorsArray"  class="matMenu">
+                            <!-- <button mat-mini-fab  ></button> -->
+                            <mat-list-item (click)="chooseCollab(collab)">{{collab.email}}</mat-list-item>
+                        </div>
+        
+                    </div>
+                </mat-menu>
+            </div>
+
+
+    </div>
+
+    <div class="footer" fxLayout="row" fxLayoutAlign="end center">
+        <button class="button" (click)="onCancel()">Cancel</button>
+        <button class="button" (click)="AddCollab()">Save</button>
+    </div>
+
+</div>

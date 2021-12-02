@@ -37,6 +37,7 @@ import { AuthguardService } from './services/authguardService/authguard.service'
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { UpdateNotesComponent } from './Components/update-notes/update-notes.component';
 import { ArchiveNotesComponent } from './Components/archive-notes/archive-notes.component';
+import { CollaboratorsComponent } from './Components/collaborators/collaborators.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ArchiveNotesComponent } from './Components/archive-notes/archive-notes.
     RemindersComponent,
     TrashNotesComponent,
     UpdateNotesComponent,
-    ArchiveNotesComponent
+    ArchiveNotesComponent,
+    CollaboratorsComponent
   ],
   imports: [
     BrowserModule,

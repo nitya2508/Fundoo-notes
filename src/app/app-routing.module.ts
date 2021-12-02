@@ -16,6 +16,7 @@ import { ArchiveNotesComponent } from './Components/archive-notes/archive-notes.
 import { AuthGuardGuard } from './Authguard/auth-guard.guard';
 
 const routes: Routes = [
+  {path:'', redirectTo:"/login", pathMatch:'full' },
   {path:'registration',component:RegistrationComponent},
   {path:'login',component:LoginComponent,},
   {path:'forgetemail',component:ForgetemailComponent},

@@ -1,4 +1,4 @@
-<div fxLayout="column" [style.background]=color fxLayoutAlign="space-between space-between">
+<div class="update" fxLayout="column" [style.background]=color fxLayoutAlign="space-between space-between">
     <div fxLayout="row">
         <input matInput [(ngModel)]="title" style="height: 50px; font-size: 25px;" type="text" placeholder="Title">
         <button mat-icon-button>
@@ -10,13 +10,16 @@
             type="text" placeholder="Take a note"></textarea>
         <!-- <input matInput [(ngModel)]="description" style="height:50px; font-size: 15px;" type="text" placeholder="Take a note"> -->
         <div fxLayout="row" fxLayoutAlign="space-between centre" >
-            <div style=" width: 60%; margin-bottom: -20px;" fxLayout="row" fxLayoutAlign="space-evenly center">
+            <div style="  margin-top: 20px;" fxLayout="row" fxLayoutAlign="space-evenly center">
                 <app-icons [noteCard]="data" (messageTrashtoDisplay)="receivemessageTrashtoDisplay($event)"></app-icons>
             </div>
             <div >
-                <button style="border: none;width: 50px;height: 30px;" (click)="closeDialog()">Close</button>
+                <button [style.background]=color class="button" (click)="closeDialog()">Close</button>
             </div>
             
         </div>
     </div>
 </div>
+
+
+<!-- style="border: none;width: 50px;height: 30px; background-color: none;" -->

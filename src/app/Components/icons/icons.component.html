@@ -1,11 +1,21 @@
-<div style="width:250px; " fxLayoutAlign="space-around center" *ngIf="!isTrashComponent">
+<div style="width:220px; " fxLayoutAlign="space-around center" *ngIf="!isTrashComponent">
 
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <img style="width: 25px; height: 25px; margin-right: 350px;margin-top: -30px;"
-            src="../../../assets/notifications_black_24dp.svg" alt="">
+    <button mat-icon-button [matMenuTriggerFor]="reminderMenu" #menuTrigger class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    <img style="width: 25px; height: 25px; margin-right: 350px;margin-top: -30px;"
+        src="../../../assets/notifications_black_24dp.svg" alt="">
+    <div >
+    <mat-menu #reminderMenu="matMenu" class="remMenu">
+        <p>Reminder:</p>
+        <button mat-menu-item>Tomorrow</button>
+        <button mat-menu-item>Next week</button>
+        <button mat-menu-item>Pick date and time</button>
+        <button mat-menu-item>Pick place</button>
+    </mat-menu>
+    </div>
     </button>
 
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button mat-icon-button  (click)="collaborate()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <img style="width: 25px; height: 25px; margin-right: 300px;margin-top: -30px;"
             src="../../../assets/person_add_alt_black_24dp.svg" alt="">
     </button>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/noteService/note.service';
+// import { Subscription } from 'rxjs';
+import { DataService } from 'src/app/services/data service/data.service';
 
 @Component({
   selector: 'app-getall-notes',
@@ -10,9 +12,16 @@ export class GetallNotesComponent implements OnInit {
 notesArray:any;
 noteData:any;
 
-  constructor( private noteService: NoteService ) { }
+message:any;
+public subscription: any;
+
+  constructor( private noteService: NoteService , private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.subscription = this.dataService.currentMessage.subscribe(message => {
+      this.message = message
+      this.getAllNotes()
+    })
     this.getAllNotes()
   }
 

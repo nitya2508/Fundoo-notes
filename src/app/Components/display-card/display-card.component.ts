@@ -25,9 +25,10 @@ export class DisplayCardComponent implements OnInit {
   openDialog(note:any){
     const dialogRef = this.dialog.open(UpdateNotesComponent, {
      
-      width: '50%',
+      width: '40%',
       height: 'auto',
-      backdropClass: [this.color]="note.color",
+      panelClass: "updateDialog",
+      // backdropClass: [this.color]="note.color",
       // backdropClass: note.color,
       data: note,
     });

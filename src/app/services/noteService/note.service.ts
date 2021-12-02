@@ -130,4 +130,17 @@ export class NoteService {
         }
         return this.httpService.postService('/notes/deleteForeverNotes', data, true, httpOptions)
     }
+
+    AddCollaborators(data:any,id:any){
+      let httpOptions = {
+        headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': this.token
+        })
+        
+        }
+        return this.httpService.postService('/notes/'+id+'/AddcollaboratorsNotes', data, true, httpOptions)
+    }
+
+   
 }

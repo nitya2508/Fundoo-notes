@@ -6,9 +6,22 @@
       <mat-card-content style="font-size: 15px; margin-top: 15px;" (click)="openDialog(note)">
         <!-- <p>This card has divider and indeterminate progress as footer</p> -->
         <p>{{ note.description }}</p>
+
       </mat-card-content>
       <!-- <mat-divider inset></mat-divider> -->
+      
+      <div fxLayout="row" >
+        <div *ngFor="let collaborate of note.collaborators">
+          <button mat-mini-fab style=" background-color: #c09999;">{{collaborate.firstName[0]}}</button>
+      </div>
+    </div>
+     
+  
       <mat-card-actions>
+
+       
+
+
         <div class="hide"  fxLayoutAlign="space-evenly center" >
         <app-icons [noteCard]="note" (messageTrashtoDisplay)="receivemessageTrashtoDisplay($event)" ></app-icons>
       </div>

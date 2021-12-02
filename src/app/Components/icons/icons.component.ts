@@ -6,7 +6,8 @@ import { ArchiveNotesComponent } from '../archive-notes/archive-notes.component'
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { CollaboratorsComponent } from '../collaborators/collaborators.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-icons',
@@ -23,7 +24,7 @@ export class IconsComponent implements OnInit {
   isArchiveComponent: boolean = false;
 
 
-  constructor(private note: NoteService,  private route: ActivatedRoute, private Router: Router,
+  constructor(private note: NoteService,  private route: ActivatedRoute, private Router: Router,public dialog: MatDialog,
     private snackbar :MatSnackBar) { }
 
   ngOnInit(): void {
@@ -185,5 +186,36 @@ export class IconsComponent implements OnInit {
     );
     // window.location.reload();
   }
+
+
+
+ collaborate() {
+
+  console.log("this is collaborate");
+  const dialogRef = this.dialog.open(CollaboratorsComponent, {
+   
+    width: '35%',
+    height: 'auto',
+    panelClass: "updateDialog",
+    // backdropClass: [this.color]="note.color",
+    // backdropClass: note.color,
+    data: this.noteCard,
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed',result);
+    // this.messageDisplaytoGetAllnotes.emit(result);
+    
+    // this.snackbar.open('Note updated Successfully !','',{
+    //   duration: 2000,
+    // });
+
+    
+  });
+  
+
+
+  
+}
 
 }

@@ -7,7 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  token;
+  token:any;
 
   constructor(private httpService : HttpService) {
     this.token= localStorage.getItem("token")
@@ -70,4 +70,19 @@ forgetpassword(payload:any,token:any)
    }
    return this.httpService.postService("/user/reset-password", this.encode(payload), true, header)
 }
+
+searchList(data:any){
+  // console.log("user list======token" ,this.token);
+
+  let header = {
+    headers : new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization' : this.token
+      
+    })
+  }
+  return this.httpService.postService("/user/searchUserList", data, true, header)
+}
+  
+
 }
