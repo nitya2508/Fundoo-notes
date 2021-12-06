@@ -23,9 +23,12 @@ baseUrl=environment.baseurl;
   }
   putService(){
 
-  }
-  deleteService(){
 
+  }
+  deleteService(url:string='', tokenRequired:boolean = false, httpOptions:any={}){
+    // console.log("http delete=====");
+    
+    return this.httpClient.delete(this.baseUrl+url,tokenRequired && httpOptions)
   }
   patchService(){
 

@@ -55,11 +55,19 @@
     margin-left: 15px;
     border: none; 
     width: 100%;
+    box-sizing: none;
 }
 .matMenu{
   // border:2px solid green;
   width: 250px;
-  height: 15px;
-  margin: 5px;
+  height: 20px;
+  margin: 8px;
+  cursor: pointer;
+  background-color: #E8E8E8;
+}
+.tickMark{
+  border-radius: 50px;
+  border: none;
+  // margin-left: 300px;
 }
 

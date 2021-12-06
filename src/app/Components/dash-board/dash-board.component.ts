@@ -1,6 +1,8 @@
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data service/data.service';
+import { ThisReceiver } from '@angular/compiler';
 
 
 @Component({
@@ -11,6 +13,7 @@ import { Router } from '@angular/router';
 export class DashBoardComponent implements OnDestroy {
   isExpandable: boolean = false;
   mobileQuery: MediaQueryList;
+  value:any;
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -26,7 +29,7 @@ export class DashBoardComponent implements OnDestroy {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router:Router) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router:Router, private dataService:DataService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -41,6 +44,16 @@ export class DashBoardComponent implements OnDestroy {
   logout(){
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login')
+  }
+
+  searchTitle(event:any){
+    console.log("input in search field===",event.target.value);
+    this.value=event.target.value
+    let Ddata={
+      type:'search',
+      data:[this.value]
+    }
+    this.dataService.changeData(Ddata)
   }
 
   notes() {

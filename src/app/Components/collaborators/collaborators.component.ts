@@ -4,6 +4,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { UserService } from 'src/app/services/userService/user.service';
 import { NoteService } from 'src/app/services/noteService/note.service';
 import { DataService } from 'src/app/services/data service/data.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-collaborators',
@@ -19,23 +21,28 @@ export class CollaboratorsComponent implements OnInit {
   values:any;
   collaboratorsArray:any;
   inputEmail:any;
-  inputdata:any;
+  notedata:any;
   collabData:any;
   collaborators:any;
 
+  isAdded: boolean=false;
+  isEmailInput: boolean=false;
+
   constructor(
+    private snackbar: MatSnackBar,
+    private router: Router,
     private dataService: DataService,
     private userService: UserService,
     private noteService: NoteService,
     public dialogRef: MatDialogRef<CollaboratorsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { 
-    this.inputdata=data;
+    this.notedata=data;
    
   }
 
   ngOnInit(): void {
-    this.collaborators=this.inputdata.collaborators;
+    this.collaborators=this.notedata.collaborators;
   }
 
   onNoClick(): void {
@@ -44,7 +51,7 @@ export class CollaboratorsComponent implements OnInit {
 
   changeInput(e:any){
     // console.log("collaborate", e.target.value);
-    
+    this.isEmailInput=true;
     let data = {
       "searchWord": e.target.value
       }
@@ -56,35 +63,86 @@ export class CollaboratorsComponent implements OnInit {
 
   chooseCollab(collab:any){
     // console.log("selected email in collab list", collab);
-    this.collabData=collab
-    this.inputEmail=collab.email
+    this.isAdded=true;
+    this.collabData=collab;
+    this.inputEmail=collab.email;
+    
     // console.log(this.inputEmail);
     // console.log("data======",this.inputdata);
     // console.log("data======id",this.inputdata.id);
     
   }
-
-  onCancel(){
-    this.dialogRef.close();
-  }
-
-  AddCollab(){
-    this.dialogRef.close();
+  clickOnTick(){
+    this.isAdded=false;
+    this.inputEmail="";
     let collaboratorData = {
       firstName: this.collabData.firstName,
       lastName: this.collabData.lastName,
       email: this.collabData.email,
       userId: this.collabData.userId
     }
-    this.noteService.AddCollaborators(collaboratorData,this.inputdata.id).subscribe((result:any) => {
-      console.log("add colab response",result)
-
+    this.collaborators.push(collaboratorData)
+    this.noteService.AddCollaborators(collaboratorData,this.notedata.id).subscribe((result:any) => {
+      // console.log("add colab response",result)
+      
       this.dataService.changeMessage(result)
-      console.log("after data sharing",);
+      // console.log("after data sharing",);
+      
+      this.snackbar.open('Collaborator added Successfully !','',{
+        duration: 2000,
+      });
+    },err=>{
+      console.log("error");
       
     })
-    
   }
 
+  onCancel(){
+    this.dialogRef.close();
+  }
+  
 
+  AddCollab(){
+    console.log("isAdded ===",this.isAdded);
+    this.inputEmail="";
+    // this.dialogRef.close();
+   if(this.isAdded == true){
+    this.dialogRef.close();
+
+    let collaboratorData = {
+      firstName: this.collabData.firstName,
+      lastName: this.collabData.lastName,
+      email: this.collabData.email,
+      userId: this.collabData.userId
+    }
+    this.noteService.AddCollaborators(collaboratorData,this.notedata.id).subscribe((result:any) => {
+      // console.log("add colab response",result)
+      
+      this.dataService.changeMessage(result)
+      // console.log("after data sharing",);
+
+      this.snackbar.open('Collaborator added Successfully !','',{
+        duration: 2000,
+      });
+  
+    },err=>{
+      console.log("error");
+      
+    })
+  }else{
+    this.dialogRef.close();
+  }
+  }
+
+  deletecollaborator(collborate:any){
+    console.log("note id=====",this.notedata.id);
+    console.log("user id=====",collborate.userId);
+    
+    this.collaborators.push()
+    this.noteService.removeCollab(this.notedata.id, collborate.userId).subscribe((res:any) =>{
+      console.log("remove collab===",res);
+      this.dataService.changeMessage(res)
+    })
+
+  }
 }

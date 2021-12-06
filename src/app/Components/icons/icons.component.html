@@ -9,10 +9,26 @@
         <p>Reminder:</p>
         <button mat-menu-item>Tomorrow</button>
         <button mat-menu-item>Next week</button>
-        <button mat-menu-item>Pick date and time</button>
-        <button mat-menu-item>Pick place</button>
+        <button mat-menu-item [matMenuTriggerFor]="datePicker" #menuTrigger>
+        <img  src="../../../assets/query_builder_black_24dp.svg">Pick date and time</button>
+        <button mat-menu-item>
+            <img src="../../../assets/location_on_black_24dp.svg">Pick place</button>
     </mat-menu>
     </div>
+    <mat-menu #datePicker="matMenu">
+        <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [(ngModel)]="date" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button (click)="addReminder()" >Save</button>
+    </mat-menu> 
+    
     </button>
 
     <button mat-icon-button  (click)="collaborate()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">

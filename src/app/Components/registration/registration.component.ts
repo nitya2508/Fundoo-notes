@@ -47,7 +47,7 @@ export class RegistrationComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-     console.log("registration ======",this.registerForm.value);
+    //  console.log("registration ======",this.registerForm.value);
 
     if(this.registerForm.valid){
       let reqData = {

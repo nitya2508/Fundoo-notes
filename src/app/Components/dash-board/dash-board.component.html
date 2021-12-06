@@ -14,13 +14,13 @@
     </div>
 
     <div>
-      <mat-form-field style=" width: 700px; margin-left: 250px; height: -5px;margin-top: -15px;" appearance="outline">
+      <mat-form-field style=" width: 700px;height: 50px; margin-left: 250px;margin-top: -18px;" appearance="outline">
         <mat-icon matPrefix>
           <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
             <img style="width: 25px; height: 25px; margin-top: -20px;" src="../../../assets/search_black_24dp.svg"
               alt=""></button>
         </mat-icon>
-        <input matInput style="margin-left: 45px; font-size: 20px;height: 30px;" placeholder="Search">
+        <input matInput style="margin-left: 45px; font-size: 20px;height: 30px;" (keyup)="searchTitle($event)" placeholder="Search">
 
       </mat-form-field>
 

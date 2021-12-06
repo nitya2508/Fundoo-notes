@@ -18,11 +18,13 @@ export class IconsComponent implements OnInit {
   @Input() noteCard: any;
   @Output() messageTrashtoDisplay = new EventEmitter<string>();
   // @Output() messageArchivetoDisplay = new EventEmitter<string>();
+  date:any;
 
   isDisplayNoteComponent: boolean = false;
   isTrashComponent: boolean = false;
   isArchiveComponent: boolean = false;
 
+ 
 
   constructor(private note: NoteService,  private route: ActivatedRoute, private Router: Router,public dialog: MatDialog,
     private snackbar :MatSnackBar) { }
@@ -61,6 +63,23 @@ export class IconsComponent implements OnInit {
     { code: '#D3D3D3', name: 'grey' },
   ];
 
+  addReminder(){
+    console.log(this.date);
+    let data={
+      noteIdList: [this.noteCard.id],
+      reminder:this.date
+    }
+    this.note.AddReminder(data).subscribe((res:any)=>{
+      // console.log("reminder data",res);
+      this.messageTrashtoDisplay.emit(res)
+
+      this.snackbar.open('Reminder added!','',{
+        duration: 2000,
+      });
+    },error=>{
+      console.log("error",error);
+    })
+  }
 
   trashNote() {
     // console.log(this.noteCard.id);
@@ -70,7 +89,7 @@ export class IconsComponent implements OnInit {
       isDeleted: true,
     }
     this.note.trashNoteService(req).subscribe((res: any) => {
-      console.log("inside icon calling trash ", res.data);
+      // console.log("inside icon calling trash ", res.data);
       this.messageTrashtoDisplay.emit(res)
 
       this.snackbar.open('Note deleted !','',{
@@ -92,7 +111,7 @@ export class IconsComponent implements OnInit {
       isArchived: true,
     }
     this.note.archiveNoteService(req).subscribe((res: any) => {
-      console.log("inside icon calling archive", res.data);
+      // console.log("inside icon calling archive", res.data);
       this.messageTrashtoDisplay.emit(res)
    
       this.snackbar.open('Note archived !','',{
@@ -113,7 +132,7 @@ export class IconsComponent implements OnInit {
         isArchived: false,
       }
       this.note.archiveNoteService(req).subscribe((res:any) => {
-        console.log("inside icon calling archive" , res.data);
+        // console.log("inside icon calling archive" , res.data);
         this.messageTrashtoDisplay.emit(res)
      
         this.snackbar.open('Note unarchived !','',{
@@ -131,7 +150,7 @@ export class IconsComponent implements OnInit {
       isDeleted: false,
     }
     this.note.deleteNoteService(req).subscribe((res: any) => {
-      console.log("inside icon calling trash ", res.data);
+      // console.log("inside icon calling trash ", res.data);
       this.messageTrashtoDisplay.emit(res)
     
       this.snackbar.open('Note deleted forever !','',{
@@ -150,7 +169,7 @@ export class IconsComponent implements OnInit {
       isDeleted: false,
     }
     this.note.trashNoteService(req).subscribe((res: any) => {
-      console.log("inside icon calling trash ", res.data);
+      // console.log("inside icon calling trash ", res.data);
       this.messageTrashtoDisplay.emit(res)
     
       this.snackbar.open('Note restored !','',{
@@ -176,7 +195,7 @@ export class IconsComponent implements OnInit {
     this.note.changeColor(data).subscribe(
       (response: any) => {
         // this.color.emit()
-        console.log('Response of setColour', response);
+        // console.log('Response of setColour', response);
         this.messageTrashtoDisplay.emit(color)
       },
       (error: any) => {
@@ -203,7 +222,7 @@ export class IconsComponent implements OnInit {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed',result);
+    // console.log('The dialog was closed',result);
     // this.messageDisplaytoGetAllnotes.emit(result);
     
     // this.snackbar.open('Note updated Successfully !','',{

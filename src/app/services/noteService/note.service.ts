@@ -142,5 +142,40 @@ export class NoteService {
         return this.httpService.postService('/notes/'+id+'/AddcollaboratorsNotes', data, true, httpOptions)
     }
 
+    AddReminder(data:any){
+      let httpOptions = {
+        headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': this.token
+        })
+        
+        }
+        return this.httpService.postService('/notes/addUpdateReminderNotes', data, true, httpOptions)
+    }
+
+    getReminderService(){
+      // console.log("note service");
+      
+      let httpOptions = {
+        headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': this.token
+        })
+        
+        }
+        return this.httpService.getService('/notes/getReminderNotesList',  true, httpOptions)
+    }
+
+    removeCollab(id:any, userId:any){
+      let httpOptions = {
+        headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': this.token
+        })
+        
+        }
+        return this.httpService.deleteService('/notes/'+id+'/removeCollaboratorsNotes/'+userId,  true, httpOptions)
+    }
+  
    
 }

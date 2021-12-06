@@ -19,15 +19,15 @@ public subscription: any;
 
   ngOnInit(): void {
     this.subscription = this.dataService.currentMessage.subscribe(message => {
-      this.message = message
-      this.getAllNotes()
+      this.message = message;
+      this.getAllNotes();
     })
     this.getAllNotes()
   }
 
   getAllNotes(){
     this.noteService.getAllNoteService().subscribe((request:any) => {
-      console.log("request data", request.data.data);
+      // console.log("request data", request.data.data);
       this.notesArray=request.data.data
       // console.log("notesArray", this.notesArray);
       this.notesArray.reverse()
@@ -49,8 +49,8 @@ public subscription: any;
   }
 
   receivemessageDisplaytoGetAllnotes($event:any){
-    console.log("event from display to getAllNotes",$event);
-    console.log("auto refresh done");
+    // console.log("event from display to getAllNotes",$event);
+    // console.log("auto refresh done");
     
     this.getAllNotes()
   }

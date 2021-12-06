@@ -32,12 +32,17 @@ import {MatCardModule} from '@angular/material/card';
 import { RemindersComponent } from './Components/reminders/reminders.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+// import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 import { AuthguardService } from './services/authguardService/authguard.service';
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { UpdateNotesComponent } from './Components/update-notes/update-notes.component';
 import { ArchiveNotesComponent } from './Components/archive-notes/archive-notes.component';
 import { CollaboratorsComponent } from './Components/collaborators/collaborators.component';
+import { SearchPipe } from './searchPipe/search.pipe';
+import { ReminderComponent } from './Components/reminder/reminder.component';
 
 
 @NgModule({
@@ -56,7 +61,9 @@ import { CollaboratorsComponent } from './Components/collaborators/collaborators
     TrashNotesComponent,
     UpdateNotesComponent,
     ArchiveNotesComponent,
-    CollaboratorsComponent
+    CollaboratorsComponent,
+    SearchPipe,
+    ReminderComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +86,10 @@ import { CollaboratorsComponent } from './Components/collaborators/collaborators
     MatExpansionModule,
     MatCardModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+   
   ],
   providers: [ 
     AuthguardService

@@ -34,24 +34,31 @@
                 </div>
             </div>
 
+            
             <div *ngFor="let collborate of collaborators">
+                <div fxLayout="row" fxLayoutAlign="space-between center" >
                 <div style="margin: 10px;" fxLayout="row" fxLayoutAlign="start center">
                     <img class="image1" src="../../../assets/account_circle_black_24dp.svg" alt="">
                     <div fxLayout="column" fxLayoutAlign="start start" >
                         
                         <span class="info">{{collborate.firstName}} {{collborate.lastName}} </span>
                         <span style="margin-left: 15px;color:#5f6368 ;"> {{collborate.email}} </span> 
-                    </div>   
-                </div>
+                    </div>      
+                </div>  
+                <div>
+                    <button class="tickMark" (click)="deletecollaborator(collborate)"> 
+                        <img src="../../../assets/close_black_24dp.svg">
+                    </button>
+                </div>  
             </div>
-
-        
+            </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
             <div style="margin: 10px;" fxLayout="row" fxLayoutAlign="start center">
                 <img class="image1" src="../../../assets/person_add_black_24dp.svg" alt="">
                 <div fxLayout="column" fxLayoutAlign="start start" [matMenuTriggerFor]="emailList" #menuTrigger >
                     <input [(ngModel)]="inputEmail" class="input" type="text" (keyup)="changeInput($event)" placeholder="Person or email to share with">
                 </div>
-                <mat-menu #emailList="matMenu" class="matMenu">
+                <mat-menu #emailList="matMenu" >
                     <div >
         
                         <div *ngFor="let collab of collaboratorsArray"  class="matMenu">
@@ -62,7 +69,13 @@
                     </div>
                 </mat-menu>
             </div>
-
+                <div *ngIf="isEmailInput">
+                <button class="tickMark" (click)="clickOnTick()"> 
+                    <img src="../../../assets/done_black_24dp.svg">
+                </button>
+                </div>
+            
+        </div>
 
     </div>
 

@@ -9,11 +9,12 @@ import { RegistrationComponent } from './Components/registration/registration.co
 import { IconsComponent } from './Components/icons/icons.component';
 import { CreateNotesComponent } from './Components/create-notes/create-notes.component';
 import { DisplayCardComponent} from './Components/display-card/display-card.component';
-import { RemindersComponent } from './Components/reminders/reminders.component';
+
 import {TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { ArchiveNotesComponent } from './Components/archive-notes/archive-notes.component';
 
 import { AuthGuardGuard } from './Authguard/auth-guard.guard';
+import { ReminderComponent } from './Components/reminder/reminder.component';
 
 const routes: Routes = [
   {path:'', redirectTo:"/login", pathMatch:'full' },
@@ -26,7 +27,7 @@ const routes: Routes = [
   children:[
     {path:'', redirectTo:"/home/notes", pathMatch:'full' },
     {path:'notes', component:GetallNotesComponent},
-    {path:'reminders',component:RemindersComponent},
+    {path:'reminders',component:ReminderComponent},
     {path:'trash',component:TrashNotesComponent},
     {path:'archive',component:ArchiveNotesComponent}
   ]
