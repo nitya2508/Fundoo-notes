@@ -142,6 +142,19 @@ export class CollaboratorsComponent implements OnInit {
     this.noteService.removeCollab(this.notedata.id, collborate.userId).subscribe((res:any) =>{
       console.log("remove collab===",res);
       this.dataService.changeMessage(res)
+
+      for (let i = 0; i < this.collaborators.length; i++) {
+        if (this.collaborators[i] == collborate) {
+        this.collaborators.splice(i, 1);
+        }
+        }
+
+        this.snackbar.open('Collaborator deleted Successfully !','',{
+          duration: 2000,
+        });
+    },error=>{
+      console.log("error",error);
+      
     })
 
   }
